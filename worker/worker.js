@@ -7,4 +7,4 @@ var messageHandler = function (event) {
   
   postMessage(event.data);
 };
-this.addEventListener(message, messageHandler);
+self.addEventListener(message, messageHandler);
