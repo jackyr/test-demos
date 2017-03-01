@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>worker test</title>
+<title>worker demo</title>
 </head>
 <body>
 <script>
@@ -13,12 +13,19 @@ function run() {
 var i = setInterval(run, 200);
 var worker = new Worker('worker.js');
 
-worker.postMessage('hello world');
 worker.onmessage = function (event) {
   console.log('main onmessage:', event.data);
+  
   clearInterval(i);
   i = null;
+
+  worker.terminate();
 }
+worker.onerror = function(e){
+    console.log(e.message);
+    worker.terminate();
+};
+worker.postMessage('hello world');
 
 run();
 </script>
