@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script>
+var worker = new Worker('worker.js');
+worker.postMessage('hello world');
+worker.onmessage = function (event) {
+  console.log(1, event.data);
+}
+</script>
+</body>
+</html>
