@@ -9,7 +9,7 @@
 var worker = new Worker('worker.js');
 worker.postMessage('hello world');
 worker.onmessage = function (event) {
-  console.log(1, event.data);
+  console.log(1, event);
 }
 </script>
 </body>
