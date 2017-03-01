@@ -23,7 +23,7 @@ worker.onerror = function(e){
     console.log(e.message, e.filename, e.lineno);
     worker.terminate();
 };
-worker.postMessage(window);
+worker.postMessage(worker);
 </script>
 </body>
 </html>
