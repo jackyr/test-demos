@@ -23,7 +23,9 @@ worker.onerror = function(e){
     console.log(e.message, e.filename, e.lineno);
     worker.terminate();
 };
-worker.postMessage(worker);
+var a = {};
+worker.postMessage(a);
+setTimeout(function(){console.log(a);}, 3000);
 </script>
 </body>
 </html>
