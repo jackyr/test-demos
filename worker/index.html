@@ -23,9 +23,7 @@ worker.onerror = function(e){
     console.log(e.message, e.filename, e.lineno);
     worker.terminate();
 };
-var a = {};
-worker.postMessage(a);
-setTimeout(function(){console.log(a);}, 3000);
+worker.postMessage('hello world');
 </script>
 </body>
 </html>

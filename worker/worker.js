@@ -1,6 +1,5 @@
 // console.log('worker init');
-console.log(this, self);
-onmessage = function (event) {event.data.a = 1;
+var messageHandler = function (event) {
   console.log("worker onmessage:", event.data);
 
   var now = Date.now();
@@ -8,3 +7,4 @@ onmessage = function (event) {event.data.a = 1;
   
   postMessage(event.data);
 };
+this.addEventListener(message, messageHandler);
