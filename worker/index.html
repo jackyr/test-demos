@@ -6,14 +6,17 @@
 </head>
 <body>
 <script>
+var i = setInterval(function () {
+  console.log('running..');
+}, 200);
+
 var worker = new Worker('worker.js');
 worker.postMessage('hello world');
 worker.onmessage = function (event) {
-  console.log(1, event);
+  console.log('main onmessage:', event.data);
+  clearInterval(i);
+  i = null;
 }
-window.setInterval(function () {
-  console.log('waiting..');
-}, 500);
 </script>
 </body>
 </html>
