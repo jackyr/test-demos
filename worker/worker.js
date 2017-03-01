@@ -1,4 +1,4 @@
-console.log(123);
+console.log('worker init');
 onmessage = function (event) {
   console.log("worker onmessage:", event.data);
   

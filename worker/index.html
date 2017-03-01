@@ -12,8 +12,9 @@ function run() {
 
 var i = setInterval(run, 200);
 var worker = new Worker('worker.js');
+run();
 
-/*worker.onmessage = function (event) {
+worker.onmessage = function (event) {
   console.log('main onmessage:', event.data);
   
   clearInterval(i);
@@ -25,9 +26,7 @@ worker.onerror = function(e){
     console.log(e.message);
     worker.terminate();
 };
-worker.postMessage('hello world');*/
-
-run();
+worker.postMessage('hello world');
 </script>
 </body>
 </html>
