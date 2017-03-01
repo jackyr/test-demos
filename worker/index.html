@@ -12,7 +12,7 @@ function run() {
 
 var worker = new Worker('worker.js');
 var i = setInterval(run, 200);
-run();
+// run();
 
 worker.onmessage = function (event) {
   console.log('main onmessage:', event.data);
