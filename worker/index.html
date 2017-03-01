@@ -10,8 +10,8 @@ function run() {
   console.log('running..');
 }
 
-var i = setInterval(run, 200);
 var worker = new Worker('worker.js');
+var i = setInterval(run, 200);
 run();
 
 worker.onmessage = function (event) {
