@@ -15,15 +15,12 @@ var i = setInterval(run, 200);
 // run();
 
 worker.onmessage = function (event) {
-  console.log('main onmessage:', event.data);
-  
+  console.log('main onmessage:', event.data);  
   clearInterval(i);
   i = null;
-
-  worker.terminate();
 }
 worker.onerror = function(e){
-    console.log(e.message);
+    console.log(e);
     worker.terminate();
 };
 worker.postMessage('hello world');
