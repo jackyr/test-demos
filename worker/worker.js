@@ -1,5 +1,6 @@
 onmessage = function (event) {
   console.log(2, event);
-  var data = event.data;
-  postMessage(data);
-}
+  var now = Date.now();
+  while (Date.now() - now <= 3000) {}
+  postMessage(event.data);
+};

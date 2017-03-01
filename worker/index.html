@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title></title>
+<title>worker test</title>
 </head>
 <body>
 <script>
@@ -11,6 +11,9 @@ worker.postMessage('hello world');
 worker.onmessage = function (event) {
   console.log(1, event);
 }
+window.setInterval(function () {
+  console.log('waiting..');
+}, 500);
 </script>
 </body>
 </html>
