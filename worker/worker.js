@@ -6,5 +6,7 @@ var messageHandler = function (event) {
   while (Date.now() - now <= 2000) {}
   
   postMessage(event.data);
+  self.close();
 };
-this.addEventListener('message', messageHandler);
+
+self.addEventListener('message', messageHandler);
