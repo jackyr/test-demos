@@ -1,6 +1,6 @@
 // console.log('worker init');
 onmessage = function (event) {
-  console.log("worker onmessage:", event.data, 1);
+  console.log("worker onmessage:", event.data);
 
   var now = Date.now();
   while (Date.now() - now <= 2000) {}

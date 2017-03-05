@@ -5,9 +5,9 @@
 <title>shared worker demo</title>
 </head>
 <body>
-5
+1
 <script>
-var worker = new SharedWorker('worker.js' + '?t=' + new Date.getTime());
+var worker = new SharedWorker('worker.js');
 
 worker.port.onmessage = function (event) {
   console.log('main onmessage:', event.data);
