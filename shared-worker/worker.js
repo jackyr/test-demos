@@ -7,7 +7,7 @@ onconnect = function (event) {
   port.onmessage = function (event) {
     console.log(port.close);
     console.log("worker onmessage:", event.data);
-    port.postMessage(event.data + 'hahhah');
+    port.postMessage(event.data);
     //close();
   };
   port.start();
