@@ -1,5 +1,5 @@
 // console.log('worker init');
-var onmessage = function (event) {
+onmessage = function (event) {
   console.log("worker onmessage:", event.data);
 
   var now = Date.now();
