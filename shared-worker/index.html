@@ -13,7 +13,6 @@ worker.port.onmessage = function (event) {
 }
 worker.onerror = function(e){
     console.log(e.message, e.filename, e.lineno);
-    worker.terminate();
 };
 // worker.port.start();
 console.log(worker);
