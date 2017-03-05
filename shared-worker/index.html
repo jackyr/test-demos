@@ -15,7 +15,7 @@ worker.port.onerror = function(e){
     console.log(e.message, e.filename, e.lineno);
     worker.port.terminate();
 };
-worker.port.start();
+// worker.port.start();
 worker.port.postMessage('hello world');
 </script>
 </body>

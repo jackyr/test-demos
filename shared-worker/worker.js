@@ -5,7 +5,7 @@ onconnect = function (event) {
   port.postMessage('A new connection! The current connection number is ' + ++num);
 
   port.onmessage = function (event) {
-    alert(1);
+    //alert(1);
     console.log("worker onmessage:", event.data);
     port.postMessage(event.data);
     port.close();
