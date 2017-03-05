@@ -7,7 +7,7 @@
 <body>
 5
 <script>
-var worker = new SharedWorker('worker.js?5');
+var worker = new SharedWorker('worker.js' + '?t=' + new Date.getTime());
 
 worker.port.onmessage = function (event) {
   console.log('main onmessage:', event.data);
