@@ -16,6 +16,7 @@ worker.onerror = function(e){
     worker.port.terminate();
 };
 // worker.port.start();
+console.log(worker.port);
 worker.port.postMessage('hello world');
 </script>
 </body>
