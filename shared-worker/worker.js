@@ -10,5 +10,5 @@ onconnect = function (event) {
     port.postMessage(event.data);
     //close();
   };
-  // port.start();
+  port.start();
 };
