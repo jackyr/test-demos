@@ -11,7 +11,7 @@ var worker = new SharedWorker('worker.js');
 worker.port.onmessage = function (event) {
   console.log('main onmessage:', event.data);  
 }
-worker.port.onerror = function(e){
+worker.onerror = function(e){
     console.log(e.message, e.filename, e.lineno);
     worker.port.terminate();
 };
