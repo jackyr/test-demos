@@ -15,12 +15,12 @@ var worker = new Worker('worker.js');
 var i = setInterval(run, 200);
 // run();
 
-worker.onmessage = function (event) {
+worker.onmessage = function(event) {
   console.log('main onmessage:', event.data);  
   clearInterval(i);
   i = null;
 }
-worker.onerror = function(e){
+worker.onerror = function(e) {
     console.log(e.message, e.filename, e.lineno);
     worker.terminate();
 };
