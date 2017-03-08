@@ -24,7 +24,7 @@ worker.onerror = function(e) {
     console.log(e.message, e.filename, e.lineno);
     worker.terminate();
 };
-worker.postMessage('hello world');
+worker.postMessage('Hello');
 </script>
 </body>
 </html>
