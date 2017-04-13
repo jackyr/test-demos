@@ -27,6 +27,7 @@ self.addEventListener('fetch', function(event) {
             .then(() => console.log('cache wrote: ' + event.request.url));
           });
         }
+        console.log('next');
         return fetchResponse.clone();
       });
     })
