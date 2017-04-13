@@ -1,5 +1,5 @@
 self.addEventListener('install', function(event) {
-  event.waitUntil(
+  /*event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
         'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
@@ -7,7 +7,7 @@ self.addEventListener('install', function(event) {
         '/test-demos/service-worker/img/1.jpeg',
       ]);
     })
-  );
+  );*/
 });
 
 self.addEventListener('fetch', function(event) {
@@ -16,7 +16,6 @@ self.addEventListener('fetch', function(event) {
     caches
     .match(event.request)
     .catch(() => {
-      console.log(1);
       return fetch(event.request);
     })
     .then(res => {
