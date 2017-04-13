@@ -5,7 +5,7 @@ const CACHE_LIST = [
   //ROOT_URL,
   ...[
     'offline.html',
-    'img/1.jpeg',
+    'img/baibaihe.jpeg',
   ].map(item => ROOT_URL + item),
 ];
 
@@ -24,7 +24,11 @@ self.addEventListener('fetch', function(event) {
     caches
     .match(event.request)
     .then(response => {
-      return response || fetch(event.request).then(fetchResponse => {
+      console.log(response.body);
+      if (response) {
+        return response;
+      }
+      return fetch(event.request).then(fetchResponse => {
         if (CACHE_LIST.find(item => requestUrl.endsWith(item))) {
           caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, fetchResponse)
@@ -46,6 +50,11 @@ self.addEventListener('fetch', function(event) {
             'Content-Type': 'application/json',
           },
         });
+      }
+      if (requestUrl.endsWith(ROOT_URL + 'baibaihe.jpeg')) {
+        return new Response('http://img4.imgtn.bdimg.com/it/u=1007043693,2735869963&fm=23&gp=0.jpg', {
+          status: 200,
+        })
       }
     })
   );
