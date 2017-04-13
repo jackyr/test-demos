@@ -1,5 +1,5 @@
 const ROOT_URL = '/test-demos/service-worker/';
-const CACHE_NAME = 'V1';
+const CACHE_NAME = 'V2';
 const CACHE_LIST = [
   'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
   //ROOT_URL,
@@ -63,7 +63,6 @@ self.addEventListener('fetch', function(event) {
         });
       }
       else if (requestUrl.endsWith('baibaihe.jpeg')) {
-        console.log('#########');
         return fetch('https://zos.alipayobjects.com/rmsportal/zgpxTwqAeEFjSLFPmAWQ.jpg');
       }
       else {
