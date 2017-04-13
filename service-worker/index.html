@@ -10,7 +10,8 @@
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('worker.js', {
     scope: '/test-demos/service-worker/',
-  }).then(reg => {
+  })
+  .then(reg => {
     if(reg.installing) {
       console.log('Service worker installing');
     } else if(reg.waiting) {
@@ -18,21 +19,23 @@ if ('serviceWorker' in navigator) {
     } else if(reg.active) {
       console.log('Service worker active');
     }
-  }).catch(err => {
+  })
+  .catch(err => {
     console.log('Registration failed with ' + err);
   });
 }
 
 fetch('https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json').then(res => {
   return res.json();
-}).then(res => {
+})
+.then(res => {
   if (res.status === 'success') {
     document.querySelector('#container').innerHTML = res.data;
   }
-}).catch(err => {
+})
+.catch(err => {
   console.log(err);
 });
 </script>
-<script src="common.js"></script>
 </body>
 </html>
