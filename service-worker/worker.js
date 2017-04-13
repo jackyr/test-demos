@@ -64,13 +64,7 @@ self.addEventListener('fetch', function(event) {
       }
       else if (requestUrl.endsWith('baibaihe.jpeg')) {
         console.log('#########');
-        const res = fetch('https://zos.alipayobjects.com/rmsportal/zgpxTwqAeEFjSLFPmAWQ.jpg');
-        return new Response(res, {
-          status: 200,
-          headers: {
-            'Content-type': 'image/jpeg',
-          },
-        });
+        return fetch('https://zos.alipayobjects.com/rmsportal/zgpxTwqAeEFjSLFPmAWQ.jpg');
       }
       else {
         return new Response('Resource fetch failed', {
