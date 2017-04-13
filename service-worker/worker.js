@@ -1,12 +1,11 @@
 const ROOT_URL = '/test-demos/service-worker/';
 const CACHE_LIST = [
+  'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
   ...[
     'offline.html',
     'img/1.jpeg'
   ].map(item => ROOT_URL + item),
-  'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
 ];
-console.log(CACHE_LIST);
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
