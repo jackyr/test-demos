@@ -40,9 +40,9 @@ self.addEventListener('fetch', function(event) {
     .catch(() => {
       console.log(requestUrl);
       if (requestUrl.endsWith(ROOT_URL)) {
-        return caches.match(ROOT_URL + 'offline.html').catch(err => console.log('报错'));
-      }
-      if (requestUrl.endsWith('hVsghLyuoDyZovLGhSxl.json')) {
+        return caches.match(ROOT_URL + 'offline.html');
+      } 
+      else if (requestUrl.endsWith('hVsghLyuoDyZovLGhSxl.json')) {
         const res = JSON.stringify({status: 'success', data: '我是离线指定的返回值'});
         return new Response(res, {
           status: 200,
@@ -51,10 +51,15 @@ self.addEventListener('fetch', function(event) {
           },
         });
       }
-      if (requestUrl.endsWith('baibaihe.jpeg')) {
+      else if (requestUrl.endsWith('baibaihe.jpeg')) {
         return new Response('http://img4.imgtn.bdimg.com/it/u=1007043693,2735869963&fm=23&gp=0.jpg', {
           status: 200,
         });
+      }
+      else {
+        return new Response('Resource fetch failed', {
+          status: 404,
+        })
       }
     })
   );
