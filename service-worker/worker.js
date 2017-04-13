@@ -18,12 +18,8 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches
     .match(event.request)
-    .catch(() => {
-      console.log(1);
-      return fetch(event.request);
-    })
     .then(response => {
-      console.log(2, response);
+      console.log(1, response);
       return response || fetch(event.request)
         .then(fetchResponse => {
           if (CACHE_LIST.find(item => event.request.url.endWith(item))) {
@@ -36,7 +32,7 @@ self.addEventListener('fetch', function(event) {
         });      
     })
     .catch(() => {
-      console.log(3);
+      console.log(2);
       return caches.match('/test-demos/service-worker/offline.html');
     })
   );
