@@ -19,17 +19,15 @@ self.addEventListener('fetch', function(event) {
   console.log('fetch event occurred: ' + event.request.url);
   event.respondWith(
     caches.match(event.request).then(response => {
-      return (response || fetch(event.request)
-        .then(fetchResponse => {
-          if (CACHE_LIST.find(item => event.request.url.endsWith(item))) {
-            caches.open('v1').then(cache => {
-              cache.put(event.request, fetchResponse.clone())
-              .then(() => console.log('cache wrote: ' + event.request.url));
-            });
-          }
-          return fetchResponse;
-        })
-      );
+      return (response || fetch(event.request).then(fetchResponse => {
+        if (CACHE_LIST.find(item => event.request.url.endsWith(item))) {
+          caches.open('v1').then(cache => {
+            cache.put(event.request, fetchResponse.clone())
+            .then(() => console.log('cache wrote: ' + event.request.url));
+          });
+        }
+        return fetchResponse;
+      }));
     })
     .catch(() => {
       if (event.request.url.endsWith(ROOT_URL)) {
