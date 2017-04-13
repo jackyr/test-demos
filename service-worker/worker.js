@@ -9,12 +9,24 @@ const CACHE_LIST = [
   ].map(item => ROOT_URL + item),
 ];
 
-self.addEventListener('install', function(event) {
-  /*event.waitUntil(
+/*self.addEventListener('install', function(event) {
+  event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll(CACHE_LIST);
     })
-  );*/
+  );
+});*/
+
+this.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(keyList => {
+      return Promise.all(keyList.map(key => {
+        if (key !== CACHE_NAME) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
 });
 
 self.addEventListener('fetch', function(event) {
