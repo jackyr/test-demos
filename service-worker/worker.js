@@ -3,7 +3,8 @@ self.addEventListener('install', function(event) {
     caches.open('v1').then(function(cache) {
       return cache.addAll([
         'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
-        '/test-demos/service-worker/img/',
+        '/test-demos/service-worker/',
+        '/test-demos/service-worker/img/1.jpeg',
       ]);
     })
   );
