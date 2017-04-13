@@ -5,7 +5,7 @@
 <title>shared worker demo</title>
 </head>
 <body>
-加数1： <input type="number" onchange="onChangeHandler(this.value)" />
+加数： <input type="number" onchange="onChangeHandler(this.value)" />
 <div id="result"></div>
 <script>
 var worker = new SharedWorker('worker.js', 'sharedWorker');
@@ -16,6 +16,10 @@ worker.port.onmessage = event => {
 
 function onChangeHandler(value) {
   worker.port.postMessage(value);
+}
+
+window.onbeforeunload = function () {
+  worker.port.postMessage('close');
 }
 </script>
 </body>

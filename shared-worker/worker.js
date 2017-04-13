@@ -1,19 +1,24 @@
-var i = 0;
 var portSet = [];
 var numSet = [];
 onconnect = event => {
   var port = event.ports[0];
   portSet.push(port);
   numSet.push(0);
-  console.log("worker onconnect:", 'A new connection! The current connection number is ' + ++i);
+  console.log('New connection!');
   
-  port.onmessage = (i => event => {
+  port.onmessage = event => {
     var data = event.data;
-    numSet[i-1] = data - 0;
+    var portIndex = portSet.indexOf(event.target);
+    if (data === 'close') {
+      portSet.splice(portIndex, 1);
+      numSet.splice(portIndex, 1);
+    } else {
+      numSet[portIndex] = Number(data);
+    }
     portSet.forEach(port => {
       port.postMessage(getResult(numSet));
     });
-  })(i);
+  };
   // port.start();
 
   function getResult(set) {
