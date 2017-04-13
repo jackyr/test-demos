@@ -21,7 +21,6 @@ self.addEventListener('fetch', function(event) {
     caches
     .match(event.request)
     .then(response => {
-      console.log(1, response);
       return (response || fetch(event.request)
         .then(fetchResponse => {
           if (CACHE_LIST.find(item => event.request.url.endsWith(item))) {
