@@ -5,7 +5,7 @@ const CACHE_LIST = [
   //ROOT_URL,
   ...[
     'offline.html',
-    'img/baibaihe.jpeg',
+    'img/1.jpeg',
   ].map(item => ROOT_URL + item),
 ];
 
@@ -49,11 +49,6 @@ self.addEventListener('fetch', function(event) {
           headers: {
             'Content-Type': 'application/json',
           },
-        });
-      }
-      if (requestUrl.endsWith('baibaihe.jpeg')) {
-        return new Response('http://img4.imgtn.bdimg.com/it/u=1007043693,2735869963&fm=23&gp=0.jpg', {
-          status: 200,
         });
       }
     })
