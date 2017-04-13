@@ -1,9 +1,12 @@
+const ROOT_URL = '/test-demos/service-worker/';
 const CACHE_LIST = [
+  ...[
+    'offline.html',
+    'img/1.jpeg'
+  ].map(item => ROOT_URL + item),
   'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
-  //'/test-demos/service-worker/',
-  '/test-demos/service-worker/offline.html',
-  '/test-demos/service-worker/img/1.jpeg',
 ];
+console.log(CACHE_LIST);
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
@@ -34,7 +37,9 @@ self.addEventListener('fetch', function(event) {
     })
     .catch(() => {
       console.log(2);
-      return caches.match('/test-demos/service-worker/offline.html');
+      if (event.request.url.endsWith(ROOT_URL)) {
+        return caches.match(ROOT_URL + 'offline.html');
+      }
     })
   );
 });
