@@ -31,6 +31,7 @@ self.addEventListener('fetch', function(event) {
               cache.put(event.request, fetchResponse);
             });
           }
+          console.log(fetchResponse);
           return fetchResponse;
         });      
     })
