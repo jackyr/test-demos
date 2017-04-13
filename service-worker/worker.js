@@ -23,12 +23,11 @@ self.addEventListener('fetch', function(event) {
       return response || fetch(event.request).then(fetchResponse => {
         if (CACHE_LIST.find(item => event.request.url.endsWith(item))) {
           caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, fetchResponse)
+            cache.put(event.request, fetchResponse.clone())
             .then(() => console.log('cache wrote: ' + event.request.url));
           });
         }
-        console.log('next');
-        return fetchResponse.clone();
+        return fetchResponse;
       });
     })
     .catch(() => {
