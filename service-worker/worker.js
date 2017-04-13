@@ -1,4 +1,5 @@
 const ROOT_URL = '/test-demos/service-worker/';
+const CACHE_NAME = 'V1';
 const CACHE_LIST = [
   'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
   ...[
@@ -9,7 +10,7 @@ const CACHE_LIST = [
 
 self.addEventListener('install', function(event) {
   /*event.waitUntil(
-    caches.open('v1').then(function(cache) {
+    caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll(CACHE_LIST);
     })
   );*/
@@ -21,7 +22,7 @@ self.addEventListener('fetch', function(event) {
     caches.match(event.request).then(response => {
       return response || fetch(event.request).then(fetchResponse => {
         if (CACHE_LIST.find(item => event.request.url.endsWith(item))) {
-          caches.open('v1').then(cache => {
+          caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, fetchResponse)
             .then(() => console.log('cache wrote: ' + event.request.url));
           });
