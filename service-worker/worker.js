@@ -9,13 +9,13 @@ const CACHE_LIST = [
   ].map(item => ROOT_URL + item),
 ];
 
-/*self.addEventListener('install', function(event) {
+self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll(CACHE_LIST);
     })
   );
-});*/
+});
 
 this.addEventListener('activate', function(event) {
   event.waitUntil(
