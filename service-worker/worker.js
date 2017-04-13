@@ -23,7 +23,7 @@ self.addEventListener('fetch', function(event) {
       return (response || fetch(event.request)
         .then(fetchResponse => {
           console.log('#########');
-          if (CACHE_LIST.find(item => event.request.url.endWith(item))) {
+          if (CACHE_LIST.find(item => event.request.url.endsWith(item))) {
             caches.open('v1').then(cache => {
               cache.put(event.request, fetchResponse);
             });
