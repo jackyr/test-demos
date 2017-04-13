@@ -8,11 +8,11 @@ const CACHE_LIST = [
 ];
 
 self.addEventListener('install', function(event) {
-  event.waitUntil(
+  /*event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll(CACHE_LIST);
     })
-  );
+  );*/
 });
 
 self.addEventListener('fetch', function(event) {
