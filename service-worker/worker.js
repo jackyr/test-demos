@@ -16,21 +16,21 @@ self.addEventListener('fetch', function(event) {
     caches
     .match(event.request)
     .catch(() => {
+      console.log(1);
       return fetch(event.request);
     })
     .then(response => {
-      console.log(response);
+      console.log(2， response);
       if (response) {
         return response;
       }
       return fetch(event.request)
         .then(fetchResponse => {
-
-        });
-      caches.open('v1').then(cache => {
-        cache.put(event.request, response);
-      });
-      return response.clone();
+          //caches.open('v1').then(cache => {
+            //cache.put(event.request, response);
+          //});
+          return fetchResponse;
+        });      
     })
     .catch(() => {
       console.log(3);
