@@ -20,7 +20,7 @@ self.addEventListener('fetch', function(event) {
     .match(event.request)
     .then(response => {
       console.log(1, response);
-      return response || fetch(event.request)
+      return (response || fetch(event.request)
         .then(fetchResponse => {
           if (CACHE_LIST.find(item => event.request.url.endWith(item))) {
             caches.open('v1').then(cache => {
@@ -29,7 +29,7 @@ self.addEventListener('fetch', function(event) {
           }
           console.log(fetchResponse);
           return fetchResponse;
-        });      
+        }));
     })
     .catch(() => {
       console.log(2);
