@@ -28,7 +28,7 @@ self.addEventListener('fetch', function(event) {
               cache.put(event.request, fetchResponse);
             });
           }
-          return fetchResponse;
+          return fetchResponse.clone();
         })
       );
     })
