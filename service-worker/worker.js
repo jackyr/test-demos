@@ -38,13 +38,13 @@ self.addEventListener('fetch', function(event) {
         return caches.match(ROOT_URL + 'offline.html');
       }
       if (requestUrl.endsWith('hVsghLyuoDyZovLGhSxl.json')) {
-        const res = JSON.stringify({status: 'success', data: '我是离线指定的返回值');
+        const res = JSON.stringify({status: 'success', data: '我是离线指定的返回值'});
         return new Response(res, {
           status: 200,
           headers: {
             'Content-Type': 'application/json',
           }
-        })
+        });
       }
     })
   );
