@@ -51,10 +51,10 @@ self.addEventListener('fetch', function(event) {
           },
         });
       }
-      if (requestUrl.endsWith(ROOT_URL + 'baibaihe.jpeg')) {
+      if (requestUrl.endsWith(ROOT_URL + 'img/baibaihe.jpeg')) {
         return new Response('http://img4.imgtn.bdimg.com/it/u=1007043693,2735869963&fm=23&gp=0.jpg', {
           status: 200,
-        })
+        });
       }
     })
   );
