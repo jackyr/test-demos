@@ -2,9 +2,10 @@ const ROOT_URL = '/test-demos/service-worker/';
 const CACHE_NAME = 'V1';
 const CACHE_LIST = [
   'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
+  //ROOT_URL,
   ...[
     'offline.html',
-    'img/1.jpeg'
+    'img/1.jpeg',
   ].map(item => ROOT_URL + item),
 ];
 
@@ -43,7 +44,7 @@ self.addEventListener('fetch', function(event) {
           status: 200,
           headers: {
             'Content-Type': 'application/json',
-          }
+          },
         });
       }
     })
