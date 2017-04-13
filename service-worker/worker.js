@@ -67,6 +67,9 @@ self.addEventListener('fetch', function(event) {
         const res = fetch('https://zos.alipayobjects.com/rmsportal/zgpxTwqAeEFjSLFPmAWQ.jpg');
         return new Response(res, {
           status: 200,
+          headers: {
+            'Content-type': 'image/jpeg',
+          },
         });
       }
       else {
