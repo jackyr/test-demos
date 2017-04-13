@@ -2,7 +2,7 @@ const ROOT_URL = '/test-demos/service-worker/';
 const CACHE_NAME = 'V1';
 const CACHE_LIST = [
   'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
-  ROOT_URL,
+  //ROOT_URL,
   ...[
     'offline.html',
     'img/baibaihe.jpeg',

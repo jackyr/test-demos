@@ -8,7 +8,7 @@
 <div id="container"></div>
 <img src="/test-demos/service-worker/img/baibaihe.jpeg"></img>
 <script>
-/*if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('worker.js', {
     scope: '/test-demos/service-worker/',
   }).then(reg => {
@@ -22,7 +22,7 @@
   }).catch(err => {
     console.log('Registration failed with ' + err);
   });
-}*/
+}
 
 fetch('https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json').then(res => {
   return res.json();
