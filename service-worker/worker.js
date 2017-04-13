@@ -50,7 +50,6 @@ self.addEventListener('fetch', function(event) {
       });
     })
     .catch(() => {
-      console.log(requestUrl);
       if (requestUrl.endsWith(ROOT_URL)) {
         return caches.match(ROOT_URL + 'offline.html');
       } 
@@ -64,7 +63,9 @@ self.addEventListener('fetch', function(event) {
         });
       }
       else if (requestUrl.endsWith('baibaihe.jpeg')) {
-        return new Response('http://img4.imgtn.bdimg.com/it/u=1007043693,2735869963&fm=23&gp=0.jpg', {
+        console.log('#########');
+        const res = fetch('http://img4.imgtn.bdimg.com/it/u=1007043693,2735869963&fm=23&gp=0.jpg');
+        return new Response(res, {
           status: 200,
         });
       }
