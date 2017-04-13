@@ -18,9 +18,15 @@ self.addEventListener('fetch', function(event) {
     .catch(() => {
       return fetch(event.request);
     })
-    .then(res => {
-      console.log(2, res);
-      response = res;
+    .then(response => {
+      console.log(response);
+      if (response) {
+        return response;
+      }
+      return fetch(event.request)
+        .then(fetchResponse => {
+
+        });
       caches.open('v1').then(cache => {
         cache.put(event.request, response);
       });
@@ -28,7 +34,7 @@ self.addEventListener('fetch', function(event) {
     })
     .catch(() => {
       console.log(3);
-      return new Response('<html><body><font color="red">我是兜底的页面</font></body></html>', {status: 200});
+      return new Response('11111', {status: 200, contentType: ''});
     })
   );
   // event.respondWith(
