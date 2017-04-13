@@ -20,15 +20,16 @@ self.addEventListener('fetch', function(event) {
       return fetch(event.request);
     })
     .then(res => {
-      console.log(2);
+      console.log(2, res);
       response = res;
       caches.open('v1').then(cache => {
         cache.put(event.request, response);
       });
       return response.clone();
-    }).catch(() => {
+    })
+    .catch(() => {
       console.log(3);
-      return caches.match('/sw-test/gallery/myLittleVader.jpg');
+      return new Response('我是兜底的响应', {status: 200});
     })
   );
   // event.respondWith(
