@@ -24,7 +24,6 @@ self.addEventListener('fetch', function(event) {
     caches
     .match(event.request)
     .then(response => {
-      console.log(response.body);
       if (response) {
         return response;
       }
@@ -41,7 +40,7 @@ self.addEventListener('fetch', function(event) {
     .catch(() => {
       console.log(requestUrl);
       if (requestUrl.endsWith(ROOT_URL)) {
-        return caches.match(ROOT_URL + 'offline.html');
+        return caches.match(ROOT_URL + 'offline.html').catch(err => console.log('报错'));
       }
       if (requestUrl.endsWith('hVsghLyuoDyZovLGhSxl.json')) {
         const res = JSON.stringify({status: 'success', data: '我是离线指定的返回值'});
