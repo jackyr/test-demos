@@ -9,7 +9,7 @@
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('worker.js', {
-    scope: '/service-worker/',
+    scope: '/test-demos/service-worker/',
   }).then(reg => {
     if(reg.installing) {
       console.log('Service worker installing');
