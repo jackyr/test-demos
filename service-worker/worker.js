@@ -64,7 +64,7 @@ self.addEventListener('fetch', function(event) {
       }
       else if (requestUrl.endsWith('baibaihe.jpeg')) {
         console.log('#########');
-        const res = fetch('http://img4.imgtn.bdimg.com/it/u=1007043693,2735869963&fm=23&gp=0.jpg');
+        const res = fetch('https://zos.alipayobjects.com/rmsportal/zgpxTwqAeEFjSLFPmAWQ.jpg');
         return new Response(res, {
           status: 200,
         });
