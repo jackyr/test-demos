@@ -29,7 +29,7 @@ self.addEventListener('fetch', function(event) {
     })
     .catch(() => {
       console.log(3);
-      return new Response('我是兜底的响应', {status: 200});
+      return new Response('<html><body><font color="red">我是兜底的响应</font></body></html>', {status: 200});
     })
   );
   // event.respondWith(
