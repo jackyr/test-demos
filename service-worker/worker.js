@@ -25,10 +25,10 @@ self.addEventListener('fetch', function(event) {
         .then(fetchResponse => {
           if (CACHE_LIST.find(item => event.request.url.endsWith(item))) {
             caches.open('v1').then(cache => {
-              cache.put(event.request, fetchResponse);
+              cache.put(event.request, fetchResponse.clone());
             });
           }
-          return fetchResponse.clone();
+          return fetchResponse;
         })
       );
     })
