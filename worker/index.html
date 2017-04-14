@@ -5,18 +5,18 @@
 <title>worker demo</title>
 </head>
 <body>
-1
 <script>
 function run() {
-  console.log('running..');
+  document.writeln('<div>running..</div>');
 }
 
-var worker = new Worker('worker.js');
 var i = setInterval(run, 200);
-// run();
+console.log('worker start to init');
 
+var worker = new Worker('worker.js');
 worker.onmessage = function(event) {
-  console.log('main onmessage:', event.data);  
+  console.log('main onmessage:', event.data);
+  document.writeln('<div>worker返回的是：' + event.data + '</div>');
   clearInterval(i);
   i = null;
 }
