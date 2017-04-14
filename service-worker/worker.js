@@ -27,6 +27,7 @@ this.addEventListener('activate', function(event) {
       }));
     })
   );
+  console.log('Service worker is now ready to handle fetches!');
 });
 
 self.addEventListener('fetch', function(event) {
