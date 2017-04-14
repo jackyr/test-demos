@@ -12,6 +12,7 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('worker.js', {
     scope: '/test-demos/service-worker/',
   }).then(reg => {
+    //reg.update();
     if(reg.installing) {
       console.log('Service worker installing');
     } else if(reg.waiting) {
