@@ -19,13 +19,16 @@ self.addEventListener('install', function(event) {
 
 this.addEventListener('activate', function(event) {
   event.waitUntil(
-    caches.keys().then(keyList => {
+    caches
+    .keys()
+    .then(keyList => {
       return Promise.all(keyList.map(key => {
         if (key !== CACHE_NAME) {
           return caches.delete(key);
         }
       }));
-    }).then(() => console.log('Service worker is now ready to handle fetches!'))
+    })
+    .then(() => console.log('Service worker is now ready to handle fetches!'))
   );
 });
 
