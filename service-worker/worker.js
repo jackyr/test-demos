@@ -25,9 +25,8 @@ this.addEventListener('activate', function(event) {
           return caches.delete(key);
         }
       }));
-    })
+    }).then(() => console.log('Service worker is now ready to handle fetches!'))
   );
-  console.log('Service worker is now ready to handle fetches!');
 });
 
 self.addEventListener('fetch', function(event) {
