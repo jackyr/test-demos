@@ -40,6 +40,9 @@ self.addEventListener('fetch', function(event) {
         return response;
       }
       return fetch(event.request).then(fetchResponse => {
+        if (!fetchResponse || fetchResponse.status !== 200) {
+          return failureDowngrade(requestUrl);
+        }
         if (CACHE_LIST.find(item => requestUrl.endsWith(item))) {
           caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, fetchResponse)
@@ -50,26 +53,30 @@ self.addEventListener('fetch', function(event) {
       });
     })
     .catch(() => {
-      if (requestUrl.endsWith('index.html')) {
-        return caches.match(ROOT_URL + 'offline.html');
-      } 
-      else if (requestUrl.endsWith('hVsghLyuoDyZovLGhSxl.json')) {
-        const res = JSON.stringify({status: 'success', data: '我是请求出错时指定的返回值'});
-        return new Response(res, {
-          status: 200,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-      }
-      else if (requestUrl.endsWith('baibaihe.jpeg')) {
-        return fetch('https://zos.alipayobjects.com/rmsportal/zgpxTwqAeEFjSLFPmAWQ.jpg');
-      }
-      else {
-        return new Response('Resource fetch failed', {
-          status: 404,
-        })
-      }
+      return failureDowngrade(requestUrl);
     })
   );
 });
+
+function failureDowngrade(requestUrl) {
+  if (requestUrl.endsWith('index.html')) {
+    return caches.match(ROOT_URL + 'offline.html');
+  } 
+  else if (requestUrl.endsWith('hVsghLyuoDyZovLGhSxl.json')) {
+    const res = JSON.stringify({status: 'success', data: '我是请求出错时指定的返回值'});
+    return new Response(res, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+  else if (requestUrl.endsWith('baibaihe.jpeg')) {
+    return fetch('https://zos.alipayobjects.com/rmsportal/zgpxTwqAeEFjSLFPmAWQ.jpg');
+  }
+  else {
+    return new Response('Resource fetch failed', {
+      status: 404,
+    })
+  }
+}

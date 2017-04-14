@@ -1,6 +1,6 @@
 var portSet = [];
 var numSet = [];
-onconnect = event => {
+self.onconnect = event => {
   var port = event.ports[0];
   portSet.push(port);
   numSet.push(0);
