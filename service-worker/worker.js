@@ -2,11 +2,11 @@ const ROOT_URL = '/test-demos/service-worker/';
 const CACHE_NAME = 'V1';
 const CACHE_LIST = [
   'https://os.alipayobjects.com/rmsportal/hVsghLyuoDyZovLGhSxl.json',
-  //ROOT_URL,
+  //ROOT_URL + 'index.html',
   ...[
     'offline.html',
     'img/baibaihe.jpeg',
-  ].map(item => ROOT_URL + item),
+  ].map(v => ROOT_URL + v),
 ];
 
 self.addEventListener('install', function(event) {
@@ -50,7 +50,7 @@ self.addEventListener('fetch', function(event) {
       });
     })
     .catch(() => {
-      if (requestUrl.endsWith(ROOT_URL)) {
+      if (requestUrl.endsWith('index.html')) {
         return caches.match(ROOT_URL + 'offline.html');
       } 
       else if (requestUrl.endsWith('hVsghLyuoDyZovLGhSxl.json')) {
